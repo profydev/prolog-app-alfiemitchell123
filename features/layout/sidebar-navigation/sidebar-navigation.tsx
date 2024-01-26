@@ -84,6 +84,7 @@ export function SidebarNavigation() {
               iconSrc="/icons/support.svg"
               isCollapsed={isSidebarCollapsed}
               onClick={() => alert("Support")}
+              rotateIcon={false}
             />
             <MenuItemButton
               text="Collapse"
@@ -91,6 +92,7 @@ export function SidebarNavigation() {
               isCollapsed={isSidebarCollapsed}
               onClick={() => toggleSidebar()}
               className={styles.collapseMenuItem}
+              rotateIcon={true}
             />
           </ul>
         </nav>
