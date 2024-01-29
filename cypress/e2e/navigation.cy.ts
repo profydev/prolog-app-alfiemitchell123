@@ -91,5 +91,18 @@ describe("Sidebar Navigation", () => {
       cy.wait(500);
       isNotInViewport("nav");
     });
+
+    describe("Email Test", () => {
+      beforeEach(() => {
+        cy.viewport(1025, 900);
+      });
+
+      it("opens mail app with the email support@prolog-app.com and subject line: 'Support Request: '", () => {
+        cy.get("nav").contains("Support").click();
+        cy.wait(500);
+
+        cy.window().should("have.property", "opener", null);
+      });
+    });
   });
 });
