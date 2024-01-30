@@ -21,21 +21,24 @@ export function SidebarNavigation() {
   const { isSidebarCollapsed, toggleSidebar } = useContext(NavigationContext);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isLandscape, setIsLandscape] = useState(
-    window.matchMedia("(orientation: landscape)").matches,
+    window !== undefined &&
+      window.matchMedia("(orientation: landscape)").matches,
   );
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(orientation: landscape)");
+    if (typeof window !== "undefined") {
+      const mediaQuery = window.matchMedia("(orientation: landscape)");
 
-    const handleOrientationChange = (event: MediaQueryListEvent) => {
-      setIsLandscape(event.matches);
-    };
+      const handleOrientationChange = (event: MediaQueryListEvent) => {
+        setIsLandscape(event.matches);
+      };
 
-    mediaQuery.addEventListener("change", handleOrientationChange);
+      mediaQuery.addEventListener("change", handleOrientationChange);
 
-    return () => {
-      mediaQuery.removeEventListener("change", handleOrientationChange);
-    };
+      return () => {
+        mediaQuery.removeEventListener("change", handleOrientationChange);
+      };
+    }
   }, []);
 
   return (
