@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Routes } from "@config/routes";
 import classNames from "classnames";
 import { NavigationContext } from "./navigation-context";
@@ -20,6 +20,26 @@ export function SidebarNavigation() {
   const router = useRouter();
   const { isSidebarCollapsed, toggleSidebar } = useContext(NavigationContext);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isLandscape, setIsLandscape] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsLandscape(window.matchMedia("(orientation: landscape)").matches);
+
+      const mediaQuery = window.matchMedia("(orientation: landscape)");
+
+      const handleOrientationChange = (event: MediaQueryListEvent) => {
+        setIsLandscape(event.matches);
+      };
+
+      mediaQuery.addEventListener("change", handleOrientationChange);
+
+      return () => {
+        mediaQuery.removeEventListener("change", handleOrientationChange);
+      };
+    }
+  }, []);
+
   return (
     <div
       className={classNames(
@@ -38,7 +58,9 @@ export function SidebarNavigation() {
           <img
             src={
               isSidebarCollapsed
-                ? "/icons/logo-small.svg"
+                ? isLandscape
+                  ? "/icons/logo-small.svg"
+                  : "/icons/logo-large.svg"
                 : "/icons/logo-large.svg"
             }
             alt="logo"
