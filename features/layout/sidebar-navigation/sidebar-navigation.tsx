@@ -20,13 +20,12 @@ export function SidebarNavigation() {
   const router = useRouter();
   const { isSidebarCollapsed, toggleSidebar } = useContext(NavigationContext);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isLandscape, setIsLandscape] = useState(
-    window !== undefined &&
-      window.matchMedia("(orientation: landscape)").matches,
-  );
+  const [isLandscape, setIsLandscape] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
+      setIsLandscape(window.matchMedia("(orientation: landscape)").matches);
+
       const mediaQuery = window.matchMedia("(orientation: landscape)");
 
       const handleOrientationChange = (event: MediaQueryListEvent) => {
