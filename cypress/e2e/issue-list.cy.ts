@@ -31,8 +31,33 @@ describe("Issue List", () => {
   });
 
   context("desktop resolution", () => {
-    beforeEach(() => {
-      cy.viewport(1025, 900);
+    // beforeEach(() => {
+    //   cy.viewport(1025, 900);
+    //   cy.intercept('GET', 'https://prolog-api.profy.dev/issue?page=1', {
+    //     fixture: 'issues-page-1.json',
+    //   }).as('getIssuesPage1');
+    //   cy.visit('http://localhost:3000/dashboard/issues');
+
+    //   cy.wait('@getIssuesPage1');
+    //   cy.wait(500);
+    // });
+
+    it("renders the correct numEvents and numUsers", () => {
+      cy.fixture("issues-page-1.json").then((issues) => {
+        cy.get("table")
+          .find("tr")
+          .each(($row, index) => {
+            cy.wrap($row)
+              .find("td")
+              .first()
+              .should("contain", issues[index].numEvents);
+
+            cy.wrap($row)
+              .find("td")
+              .eq(1)
+              .should("contain", issues[index].numUsers);
+          });
+      });
     });
 
     it("renders the issues", () => {
