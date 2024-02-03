@@ -44,4 +44,3 @@ yarn-error.log*
 
 # Cypress test videos
 cypress/videos/
-cypress/e2e/navigation.cy.ts

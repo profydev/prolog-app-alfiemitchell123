@@ -71,6 +71,7 @@ jobs:
           name: nextjs-build
           path: .next/
       - name: Cypress run
+        run: npm run cypress -- --spec "cypress/e2e/footer.cy.ts"
         uses: cypress-io/github-action@v4
         with:
           start: npm start
