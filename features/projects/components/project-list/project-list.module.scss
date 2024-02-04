@@ -1,6 +1,24 @@
 @use "@styles/breakpoint";
 @use "@styles/space";
 
+.loadingWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 18.75rem;
+
+  .loading {
+    animation: spin 4s linear infinite;
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}
+
 .list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
