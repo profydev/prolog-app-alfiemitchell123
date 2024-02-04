@@ -75,4 +75,4 @@ jobs:
         with:
           start: npm start
           wait-on: "http://localhost:3000"
-          spec: "cypress/e2e/project-status.cy.ts"
+          spec: "cypress/e2e/projects-loading.cy.ts"
