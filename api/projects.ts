@@ -1,9 +1,27 @@
 import { axios } from "./axios";
-import type { Project } from "./projects.types";
+import { Project, ProjectStatus } from "./projects.types";
 
 const ENDPOINT = "/project";
 
-export async function getProjects() {
+export async function getProjects(): Promise<Project[]> {
   const { data } = await axios.get<Project[]>(ENDPOINT);
-  return data;
+
+  const modifiedData = data.map((project, index) => {
+    let status: ProjectStatus = ProjectStatus.stable; // Default value
+
+    if (index === 0) {
+      status = ProjectStatus.critical;
+    } else if (index === 1) {
+      status = ProjectStatus.warning;
+    } else if (index === 2) {
+      status = ProjectStatus.stable;
+    }
+
+    return {
+      ...project,
+      status,
+    };
+  });
+
+  return modifiedData;
 }
