@@ -1,0 +1,106 @@
+@use "@styles/color";
+@use "@styles/font";
+@use "@styles/space";
+
+.container {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+
+  // Label + custom checkmark
+
+  .label {
+    color: color.$gray-700;
+    font-weight: 500;
+    user-select: none;
+
+    &.sm {
+      font-size: 14px;
+    }
+
+    &.md {
+      font-size: 16px;
+    }
+  }
+
+  .checkmarkContainer {
+    pointer-events: none;
+    display: inline-block;
+    visibility: hidden;
+  }
+
+  .checkbox + .checkmarkContainer {
+    position: absolute;
+    inset: 0 0 0 2px;
+
+    &.md {
+      top: 2.5px;
+      left: 3px;
+    }
+  }
+
+  .checkbox:checked + .checkmarkContainer {
+    visibility: visible;
+  }
+
+  .checkmark {
+    &.sm {
+      width: 12px;
+      height: 12px;
+    }
+
+    &.md {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  .disabled {
+    color: color.$gray-300;
+  }
+
+  .disabled path {
+    stroke: color.$gray-200;
+  }
+
+  .checkbox {
+    appearance: none;
+    outline: none;
+    border: 1px solid color.$gray-300;
+    background: white;
+    position: relative;
+
+    &:checked,
+    &:hover {
+      border: 1px solid color.$primary-600;
+      background: color.$primary-50;
+    }
+
+    &:focus {
+      border: 1px solid color.$primary-300;
+      outline: 4px solid color.$primary-100;
+    }
+
+    &:disabled {
+      border: 1px solid color.$gray-200;
+      background: color.$gray-100;
+    }
+
+    // Sizes
+
+    &.sm {
+      width: space.$s4;
+      height: space.$s4;
+      border-radius: space.$s1;
+      padding: 0.125rem;
+    }
+
+    &.md {
+      width: space.$s5;
+      height: space.$s5;
+      border-radius: 0.375rem;
+      padding: 0.1875rem;
+    }
+  }
+}
