@@ -1,0 +1,90 @@
+@use "@styles/color";
+@use "@styles/font";
+@use "@styles/space";
+
+.container {
+  position: relative;
+
+  // Dropdown menu
+
+  .select {
+    appearance: none;
+    outline: none;
+    color: color.$gray-900;
+    border: 1px solid color.$gray-300;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px rgb(16 24 40 / 5%);
+    padding: 0.625rem 0.875rem;
+    width: 20rem;
+    background-image: url("/icons/arrow-down.svg");
+    background-repeat: no-repeat;
+    background-position-x: calc(100% - 0.75rem);
+    background-position-y: center;
+
+    &:focus {
+      border: 1px solid color.$primary-300;
+      box-shadow: 0 0 0 4px color.$primary-100;
+    }
+
+    &.withIcon {
+      padding-left: 2.62rem;
+    }
+
+    &.withLabel {
+      margin-top: 1.5rem;
+    }
+  }
+
+  // Conditional label
+
+  .label {
+    position: absolute;
+    color: color.$gray-700;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+  }
+
+  // Conditional icon
+
+  .icon {
+    position: absolute;
+    left: space.$s4;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .iconWithLabel {
+    top: 68%;
+  }
+
+  .iconWithoutLabel {
+    top: 50%;
+  }
+
+  .iconWithHint {
+    top: 47%;
+  }
+
+  // Conditional hint
+
+  .hint {
+    color: color.$gray-500;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    margin-top: 0.5rem;
+  }
+
+  // Conditional error
+
+  .error {
+    border-color: color.$error-300;
+
+    &:focus {
+      border-color: color.$error-300;
+      box-shadow: 0 0 0 4px color.$error-100;
+    }
+  }
+}
