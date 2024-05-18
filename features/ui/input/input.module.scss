@@ -1,0 +1,112 @@
+@use "@styles/color";
+@use "@styles/font";
+@use "@styles/space";
+
+.container {
+  position: relative;
+
+  .inputContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 40%;
+
+    .input {
+      flex-grow: 1;
+      padding: 10px 14px;
+      border: 1px solid color.$gray-300;
+      border-radius: 8px;
+      width: 100%;
+      outline: none;
+      color: color.$gray-900;
+      box-sizing: border-box;
+
+      // padding-left: 2.72rem;
+
+      &:focus {
+        border-color: color.$primary-300;
+        box-shadow: 0 0 0 4px color.$primary-100;
+      }
+
+      &::placeholder {
+        color: color.$gray-500;
+      }
+
+      &.withIcon {
+        padding-left: 2.72rem;
+      }
+    }
+
+    .disabled {
+      background-color: color.$gray-50;
+      color: color.$gray-500;
+    }
+
+    // Conditional error
+
+    .error {
+      border-color: color.$error-300;
+
+      &:focus {
+        border-color: color.$error-300;
+        box-shadow: 0 0 0 4px color.$error-100;
+      }
+    }
+
+    // Conditional icon
+
+    .icon {
+      position: absolute;
+      left: space.$s4;
+      transform: translateY(-50%);
+      pointer-events: none;
+      z-index: 1;
+      top: 50%;
+    }
+
+    .errorIcon {
+      position: absolute;
+      right: space.$s4;
+      transform: translateY(-50%);
+      pointer-events: none;
+      z-index: 1;
+      top: 50%;
+    }
+  }
+
+  // Conditional label
+
+  .label {
+    position: absolute;
+    color: color.$gray-700;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+  }
+
+  .inputWithLabel {
+    top: -60%;
+  }
+
+  .inputWithoutLabel {
+    top: 0%;
+  }
+
+  // Conditional hint
+
+  .hint {
+    position: absolute;
+    color: color.$gray-500;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+  }
+
+  .inputWithHint {
+    top: 80%;
+  }
+
+  .inputWithoutHint {
+    top: 0%;
+  }
+}
