@@ -2,6 +2,13 @@
 @use "@styles/space";
 @use "@styles/font";
 
+.issueFilterContainer {
+  display: flex;
+  flex-direction: row;
+  gap: space.$s6;
+  margin-bottom: space.$s6;
+}
+
 .container {
   background: white;
   border: 1px solid color.$gray-200;

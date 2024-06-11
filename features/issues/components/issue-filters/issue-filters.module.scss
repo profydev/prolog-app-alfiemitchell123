@@ -1,0 +1,35 @@
+@use "@styles/color";
+@use "@styles/space";
+@use "@styles/font";
+@use "@styles/breakpoint";
+
+.filterContainer {
+  display: flex;
+  width: 100%;
+  gap: space.$s2;
+
+  .filterContent {
+    display: flex;
+    width: 100%;
+    gap: space.$s4;
+    justify-content: space-between;
+
+    .filters {
+      display: flex;
+      gap: space.$s4;
+      justify-content: flex-end;
+      align-items: center;
+      width: 60%;
+
+      .filterSelect {
+        width: 160px;
+        height: 44px;
+      }
+
+      .filterInput {
+        width: 280px;
+        height: 44px;
+      }
+    }
+  }
+}

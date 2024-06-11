@@ -20,6 +20,10 @@ export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   error?: InputError;
   className?: string;
   disabled?: boolean;
+  placeholder?: string;
+  onChange?:
+    | ((value: string) => void)
+    | React.ChangeEventHandler<HTMLInputElement>;
 };
 
 export function Input({
@@ -29,6 +33,8 @@ export function Input({
   iconSrc,
   error = InputError.none,
   disabled = false,
+  placeholder,
+  onChange,
 }: InputProps) {
   const labelClass = label ? styles.inputWithLabel : styles.inputWithoutLabel;
   const hintClass = hint ? styles.inputWithHint : styles.inputWithoutHint;
@@ -55,8 +61,9 @@ export function Input({
             [styles.error]: error === InputError.error,
             [styles.withIcon]: icon === InputIcon.icon,
           })}
-          placeholder="user@untitledui.com"
+          placeholder={placeholder}
           type="text"
+          onChange={onChange}
         />
 
         {error === InputError.error && (

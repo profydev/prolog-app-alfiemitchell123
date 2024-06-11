@@ -4,6 +4,8 @@
 
 .container {
   position: relative;
+  width: 160px;
+  height: 100%;
 
   // Dropdown menu
 
@@ -15,11 +17,13 @@
     border-radius: 0.5rem;
     box-shadow: 0 1px 2px rgb(16 24 40 / 5%);
     padding: 0.625rem 0.875rem;
-    width: 20rem;
+    width: 100%;
+    height: 100%;
     background-image: url("/icons/arrow-down.svg");
     background-repeat: no-repeat;
     background-position-x: calc(100% - 0.75rem);
     background-position-y: center;
+    cursor: pointer;
 
     &:focus {
       border: 1px solid color.$primary-300;
@@ -33,6 +37,10 @@
     &.withLabel {
       margin-top: 1.5rem;
     }
+  }
+
+  .placeholder {
+    color: color.$gray-200;
   }
 
   // Conditional label

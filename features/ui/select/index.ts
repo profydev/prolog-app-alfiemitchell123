@@ -1,1 +1,7 @@
-export { Select } from "./select";
+export {
+  Select,
+  SelectError,
+  SelectHint,
+  SelectIcon,
+  SelectLabel,
+} from "./select";

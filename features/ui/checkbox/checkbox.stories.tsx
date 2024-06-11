@@ -27,6 +27,7 @@ const Template: StoryFn<typeof Checkbox> = ({
         indeterminate={indeterminate}
         disabled={disabled}
         onChange={onChange}
+        checked={false}
       >
         {children}
       </Checkbox>

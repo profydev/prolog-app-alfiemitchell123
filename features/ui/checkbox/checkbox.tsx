@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { useState } from "react";
 import classNames from "classnames";
 import styles from "./checkbox.module.scss";
 
@@ -13,11 +13,12 @@ export enum CheckboxLabel {
 }
 
 type CheckboxProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   label?: CheckboxLabel;
   size?: CheckboxSize;
   className?: string;
   indeterminate?: boolean;
+  checked: boolean;
   onChange: (isChecked: boolean) => void;
   disabled?: boolean;
 };
@@ -30,15 +31,11 @@ export function Checkbox({
   disabled = false,
   onChange,
 }: CheckboxProps) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isChecked, setIsChecked] = useState(false);
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const newCheckedState: boolean = event.target.checked;
-    setIsChecked(newCheckedState);
-
-    if (onChange) {
-      onChange(newCheckedState);
-    }
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange(e.target.checked);
   };
 
   return (
@@ -46,7 +43,7 @@ export function Checkbox({
       <input
         type="checkbox"
         id="checkbox"
-        onChange={handleChange}
+        onChange={handleCheckboxChange}
         disabled={disabled}
         checked={isChecked}
         {...(indeterminate && { indeterminate: true })}
