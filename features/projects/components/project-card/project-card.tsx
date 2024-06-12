@@ -24,6 +24,8 @@ const statusColors = {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   const { name, language, numIssues, numEvents24h, status } = project;
+  const projectName = project.name;
+  const link = `${Routes.issues}?project=${projectName}`;
 
   return (
     <div className={styles.container}>
@@ -55,7 +57,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
       </div>
       <div className={styles.bottomContainer}>
-        <Link href={Routes.issues} className={styles.viewIssuesAnchor}>
+        <Link href={link} className={styles.viewIssuesAnchor}>
           View issues
         </Link>
       </div>
