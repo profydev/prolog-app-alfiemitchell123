@@ -23,7 +23,7 @@ export enum SelectError {
 }
 
 export interface Option {
-  value: string;
+  value: string | null;
   label: string;
 }
 
@@ -35,6 +35,9 @@ export type SelectProps = {
   error?: SelectError;
   className?: string;
   disabled?: boolean;
+  onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  value?: string | string[];
+  placeholder?: string;
 };
 
 export function Select({
@@ -44,6 +47,9 @@ export function Select({
   hint = SelectHint.none,
   error = SelectError.none,
   disabled = false,
+  value,
+  placeholder,
+  onChange,
 }: SelectProps) {
   return (
     <div className={styles.container}>
@@ -68,6 +74,7 @@ export function Select({
       )}
       <select
         id="select"
+        value={value}
         disabled={disabled}
         className={classNames(styles.select, {
           [styles.disabled]: disabled && !(error === SelectError.error),
@@ -75,9 +82,19 @@ export function Select({
           [styles.withIcon]: icon === SelectIcon.icon,
           [styles.withLabel]: label === SelectLabel.label,
         })}
+        onChange={onChange}
       >
+        {placeholder && (
+          <option value="" disabled hidden className={styles.placeholder}>
+            {placeholder}
+          </option>
+        )}
         {options.map((option, index) => (
-          <option className={styles.option} key={index} value={option.value}>
+          <option
+            className={styles.option}
+            key={index}
+            value={option.value || ""}
+          >
             {option.label}
           </option>
         ))}
