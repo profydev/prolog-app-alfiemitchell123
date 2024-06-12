@@ -17,13 +17,27 @@ export function IssueFilters() {
   });
 
   const updateFilter = (filterName: string, filterValue: string) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
+    console.log(`Updating filter: ${filterName} = ${filterValue}`);
+    const newFilters = {
+      ...filters,
       [filterName]: filterValue,
-    }));
+    };
+    setFilters(newFilters);
+    const newQuery = {
+      ...router.query,
+      [filterName]: filterValue,
+    };
+
+    Object.keys(newQuery).forEach((key) => {
+      if (newQuery[key] === undefined || newQuery[key] === "") {
+        delete newQuery[key];
+      }
+    });
+
+    console.log("New query params:", newQuery);
     router.push({
       pathname: router.pathname,
-      query: { ...router.query, [filterName]: filterValue },
+      query: newQuery,
     });
   };
 
