@@ -4,6 +4,7 @@ import { ProjectLanguage } from "@api/projects.types";
 import { IssueLevel } from "@api/issues.types";
 import type { Issue } from "@api/issues.types";
 import styles from "./issue-row.module.scss";
+import classNames from "classnames";
 
 type IssueRowProps = {
   projectLanguage: ProjectLanguage;
@@ -22,7 +23,6 @@ export function IssueRow({ projectLanguage, issue }: IssueRowProps) {
 
   return (
     <tr className={styles.row}>
-      <td></td>
       <td className={styles.issueCell}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -38,13 +38,23 @@ export function IssueRow({ projectLanguage, issue }: IssueRowProps) {
           <div>{firstLineOfStackTrace}</div>
         </div>
       </td>
-      <td className={styles.cell}>
+      <td className={classNames(styles.statsCell, styles.cell)}>
+        <span className={styles.statsLabel}>Status</span>
         <Badge color={levelColors[level]} size={BadgeSize.sm}>
           {capitalize(level)}
         </Badge>
       </td>
-      <td className={styles.cell}>{numEvents}</td>
-      <td className={styles.cell}>{numUsers}</td>
+      <td className={classNames(styles.statsCell, styles.cell)}>
+        <span className={styles.statsLabel}>Events</span>
+        {numEvents}
+      </td>
+      <td className={classNames(styles.statsCell, styles.cell)}>
+        <span className={styles.statsLabel}>Users</span>
+        {numUsers}
+      </td>
+      <td className={styles.chartContainer}>
+        <img src="/icons/chart.svg" alt="Graph" />
+      </td>
     </tr>
   );
 }

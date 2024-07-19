@@ -1,21 +1,83 @@
 @use "@styles/color";
 @use "@styles/space";
 @use "@styles/font";
+@use "@styles/breakpoint";
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "issue issue issue"
+    "level events users"
+    "chart chart chart";
+  margin-bottom: 16px;
+  border: 1px solid color.$gray-200;
+  box-shadow: 0 1px 3px 0 #1018281a;
+  border-radius: space.$s2;
+
+  @media (min-width: breakpoint.$desktop) {
+    display: table-row;
+    margin-bottom: auto;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+.row:last-child {
+  margin-bottom: auto;
+}
 
 .row:nth-child(2n) {
-  background: color.$gray-50;
+  background: white;
+
+  @media (min-width: breakpoint.$desktop) {
+    background: color.$gray-50;
+  }
 }
 
 .cell {
   padding: space.$s4 space.$s6;
   color: color.$gray-500;
   font: font.$text-sm-regular;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+
+  @media (min-width: breakpoint.$desktop) {
+    display: table-cell;
+  }
+
+  .statsLabel {
+    display: block;
+
+    @media (min-width: breakpoint.$desktop) {
+      display: none;
+    }
+  }
 }
 
 .issueCell {
+  grid-area: issue;
   composes: cell;
   display: flex;
+  flex-direction: row;
   align-items: center;
+
+  @media (min-width: breakpoint.$desktop) {
+    flex-direction: row;
+  }
+}
+
+.chartContainer {
+  grid-area: chart;
+  margin: auto;
+  padding-bottom: 12px;
+
+  @media (min-width: breakpoint.$desktop) {
+    display: none;
+  }
 }
 
 .languageIcon {
