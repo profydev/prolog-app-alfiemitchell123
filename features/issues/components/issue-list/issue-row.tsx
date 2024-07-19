@@ -23,7 +23,6 @@ export function IssueRow({ projectLanguage, issue }: IssueRowProps) {
 
   return (
     <tr className={styles.row}>
-      <td></td>
       <td className={styles.issueCell}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
