@@ -51,7 +51,7 @@ export function IssueList() {
 
   return (
     <div>
-      <div className={styles.issueFilterContainer}>
+      <div className={styles.issueFilters}>
         <IssueFilters />
       </div>
       <div className={styles.container}>
