@@ -1,6 +1,7 @@
 @use "@styles/color";
 @use "@styles/space";
 @use "@styles/font";
+@use "@styles/breakpoint";
 
 .issueFilterContainer {
   display: flex;
@@ -11,13 +12,16 @@
 
 .container {
   background: white;
-  border: 1px solid color.$gray-200;
-  box-sizing: border-box;
-  box-shadow:
-    0 4px 8px -2px rgb(16 24 40 / 10%),
-    0 2px 4px -2px rgb(16 24 40 / 6%);
-  border-radius: space.$s2;
   overflow: hidden;
+
+  @media (min-width: breakpoint.$desktop) {
+    border: 1px solid color.$gray-200;
+    box-sizing: border-box;
+    box-shadow:
+      0 4px 8px -2px rgb(16 24 40 / 10%),
+      0 2px 4px -2px rgb(16 24 40 / 6%);
+    border-radius: space.$s2;
+  }
 }
 
 .table {
@@ -26,7 +30,12 @@
 }
 
 .headerRow {
-  border-bottom: 1px solid color.$gray-200;
+  display: none;
+
+  @media (min-width: breakpoint.$desktop) {
+    display: table-row;
+    border-bottom: 1px solid color.$gray-200;
+  }
 }
 
 .headerCell {
@@ -38,10 +47,28 @@
 
 .paginationContainer {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 16px;
   justify-content: space-between;
-  padding: space.$s4 space.$s6;
-  border-top: 1px solid color.$gray-200;
+  padding: space.$s4 0;
+
+  @media (min-width: breakpoint.$desktop) {
+    flex-direction: row;
+    border-top: 1px solid color.$gray-200;
+    gap: none;
+    padding: space.$s4 space.$s6;
+  }
+}
+
+.pagBtnContainer {
+  display: flex;
+  width: 100%;
+
+  @media (min-width: breakpoint.$desktop) {
+    display: block;
+    width: auto;
+  }
 }
 
 .paginationButton {
@@ -51,6 +78,7 @@
   border: 1px solid color.$gray-300;
   box-shadow: 0 1px 2px rgb(16 24 40 / 5%);
   border-radius: 6px;
+  flex: 1;
 }
 
 .paginationButton:not(:first-of-type) {

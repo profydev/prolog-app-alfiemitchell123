@@ -85,16 +85,14 @@ export function IssueFilters() {
             onChange={handleLevelChange}
             placeholder="Level"
           />
-          <div className={styles.inputContainer}>
-            <Input
-              className={styles.filterInput}
-              placeholder="Project Name"
-              value={filters.project || ""}
-              icon={InputIcon.icon}
-              iconSrc={"/icons/search.svg"}
-              onChange={handleProjectNameChange}
-            />
-          </div>
+          <Input
+            className={styles.filterInput}
+            placeholder="Project Name"
+            value={filters.project || ""}
+            icon={InputIcon.icon}
+            iconSrc={"/icons/search.svg"}
+            onChange={handleProjectNameChange}
+          />
         </div>
       </div>
     </div>

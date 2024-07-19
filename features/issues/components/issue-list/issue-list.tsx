@@ -58,11 +58,6 @@ export function IssueList() {
         <table className={styles.table}>
           <thead>
             <tr className={styles.headerRow}>
-              <th className={styles.headerCell}>
-                {/* <Checkbox
-                  indeterminate={true}
-                /> */}
-              </th>
               <th className={styles.headerCell}>Issue</th>
               <th className={styles.headerCell}>Level</th>
               <th className={styles.headerCell}>Events</th>
@@ -80,7 +75,7 @@ export function IssueList() {
           </tbody>
         </table>
         <div className={styles.paginationContainer}>
-          <div>
+          <div className={styles.pagBtnContainer}>
             <button
               className={styles.paginationButton}
               onClick={() => navigateToPage(page - 1)}
