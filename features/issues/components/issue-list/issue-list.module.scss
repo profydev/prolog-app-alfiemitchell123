@@ -3,6 +3,13 @@
 @use "@styles/font";
 @use "@styles/breakpoint";
 
+.issueFilters {
+  display: flex;
+  flex-direction: row;
+  gap: space.$s6;
+  margin-bottom: space.$s6;
+}
+
 .container {
   background: white;
   overflow: hidden;
@@ -15,13 +22,6 @@
       0 2px 4px -2px rgb(16 24 40 / 6%);
     border-radius: space.$s2;
   }
-}
-
-.issueFilters {
-  display: flex;
-  flex-direction: row;
-  gap: space.$s6;
-  margin-bottom: space.$s6;
 }
 
 .table {
