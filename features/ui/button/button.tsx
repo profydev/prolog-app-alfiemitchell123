@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import Link from "next/link";
 import styles from "./button.module.scss";
 
 export enum ButtonSize {
@@ -33,6 +34,7 @@ type ButtonProps = {
   color?: ButtonColor;
   onClick?: () => void;
   className?: string;
+  href?: string;
 };
 
 export function Button({
@@ -42,17 +44,10 @@ export function Button({
   size = ButtonSize.md,
   color = ButtonColor.primary,
   onClick,
+  href,
 }: ButtonProps) {
-  return (
-    <button
-      className={classNames(
-        styles.button,
-        styles[size],
-        styles[color],
-        icon === ButtonIcon.only && styles.only,
-      )}
-      onClick={onClick}
-    >
+  const buttonContent = (
+    <>
       {icon === ButtonIcon.leading && (
         <img className={classNames(styles.icon)} src={iconSrc} />
       )}
@@ -63,6 +58,23 @@ export function Button({
       {icon === ButtonIcon.only && (
         <img className={classNames(styles.icon)} src={iconSrc} />
       )}
+    </>
+  );
+
+  const buttonClasses = classNames(
+    styles.button,
+    styles[size],
+    styles[color],
+    icon === ButtonIcon.only && styles.only,
+  );
+
+  return href ? (
+    <Link className={buttonClasses} href={href}>
+      {buttonContent}
+    </Link>
+  ) : (
+    <button className={buttonClasses} onClick={onClick}>
+      {buttonContent}
     </button>
   );
 }
