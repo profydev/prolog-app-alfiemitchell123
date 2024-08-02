@@ -45,6 +45,7 @@ export function Button({
   color = ButtonColor.primary,
   onClick,
   href,
+  className,
 }: ButtonProps) {
   const buttonContent = (
     <>
@@ -66,6 +67,7 @@ export function Button({
     styles[size],
     styles[color],
     icon === ButtonIcon.only && styles.only,
+    className,
   );
 
   return href ? (
