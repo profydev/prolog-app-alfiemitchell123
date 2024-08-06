@@ -1,0 +1,40 @@
+@use "@styles/color";
+@use "@styles/font";
+
+.heroContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 96px 0;
+  gap: 64px;
+}
+
+.heroTitleContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-align: center;
+}
+
+.hero.light-gray {
+  background: color.$gray-50;
+}
+
+.heroTitle {
+  font-size: 60px;
+
+  // font-weight: 600; can't use this weight without artifacts in the font
+  line-height: 72px;
+  margin: 0 auto;
+  color: color.$gray-900;
+}
+
+.heroSubtitle {
+  width: 648px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  margin: 0 auto;
+  color: color.$gray-500;
+}

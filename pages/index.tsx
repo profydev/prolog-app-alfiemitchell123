@@ -5,6 +5,7 @@ import { Modal } from "@features/ui";
 import Link from "next/link";
 import styles from "./index.module.scss";
 import classNames from "classnames";
+import { Hero } from "@features/ui";
 
 const IssuesPage = () => {
   const menuItems = [
@@ -90,6 +91,8 @@ const IssuesPage = () => {
           </div>
         </div>
       </Modal>
+
+      <Hero />
     </div>
   );
 };
